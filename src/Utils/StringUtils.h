@@ -18,6 +18,7 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
 #pragma once
+#include <atlstr.h>
 
 #ifdef UNICODE
 #define _tcswildcmp wcswildcmp
