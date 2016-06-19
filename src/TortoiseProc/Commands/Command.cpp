@@ -78,6 +78,7 @@
 #include "ShowCompareCommand.h"
 #include "DaemonCommand.h"
 #include "CommitIsOnRefsCommand.h"
+#include "SyncSettingsCommand.h"
 
 #if 0
 #include "CrashCommand.h"
@@ -157,6 +158,7 @@ typedef enum
 	cmdDaemon,
 	cmdPGPFP,
 	cmdCommitIsOnRefs,
+	cmdSyncSettings,
 } TGitCommand;
 
 static const struct CommandInfo
@@ -231,6 +233,7 @@ static const struct CommandInfo
 	{	cmdDaemon,			_T("daemon")			},
 	{	cmdPGPFP,			_T("pgpfp")				},
 	{	cmdCommitIsOnRefs,	_T("commitisonrefs")	},
+	{	cmdSyncSettings,	_T("syncsettings")		},
 };
 
 
@@ -371,6 +374,8 @@ Command * CommandServer::GetCommand(const CString& sCmd)
 		return new DaemonCommand;
 	case cmdCommitIsOnRefs:
 		return new CommitIsOnRefsCommand;
+	case cmdSyncSettings:
+		return new SyncSettingsCommand;
 
 #if 0
 	case cmdCrash:

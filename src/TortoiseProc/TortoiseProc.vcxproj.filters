@@ -165,6 +165,9 @@
     <Filter Include="Commands\CommitIsOnRefs">
       <UniqueIdentifier>{c9518b55-36f2-4643-ab1a-c9e6d30ad1b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Commands\SyncSettings">
+      <UniqueIdentifier>{6db37755-baf4-45f7-a210-15a4ebbd58f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddRemoteDlg.cpp">
@@ -934,6 +937,9 @@
     </ClCompile>
     <ClCompile Include="..\TortoiseShell\ShellCache.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\SyncSettingsCommand.cpp">
+      <Filter>Commands\SyncSettings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1746,6 +1752,9 @@
     </ClInclude>
     <ClInclude Include="..\TortoiseShell\ShellCache.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\SyncSettingsCommand.h">
+      <Filter>Commands\SyncSettings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -131,5 +131,14 @@ public:
 	 */
 	static void PipesToNulls(TCHAR* buffer, size_t length);
 	static void PipesToNulls(TCHAR* buffer);
-};
 
+	static std::unique_ptr<char[]>      Decrypt(const char* text);
+	static CStringA                     Encrypt(const char* text);
+	static std::unique_ptr<wchar_t[]>   Decrypt(const wchar_t* text);
+	static CStringW                     Encrypt(const wchar_t* text);
+
+	static std::string                  Encrypt(const std::string& s, const std::string& password);
+	static std::string                  Decrypt(const std::string& s, const std::string& password);
+	static std::string                  ToHexString(BYTE* pSrc, int nSrcLen);
+	static bool                         FromHexString(const std::string& src, BYTE* pDest);
+};
