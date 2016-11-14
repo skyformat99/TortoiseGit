@@ -21,7 +21,6 @@
 #include "SyncSettingsCommand.h"
 #include "registry.h"
 #include "TGitPath.h"
-#include "SimpleIni.h"
 #include "SmartHandle.h"
 #include "StringUtils.h"
 #include "UnicodeUtils.h"
@@ -269,8 +268,8 @@ bool SyncSettingsCommand::Execute()
         iniFile.GetAllKeys(L"registry_dword", keys);
         for (const auto& k : keys)
         {
-            CRegDWORD reg(regpath + k);
-            reg = _wtol(iniFile.GetValue(L"registry_dword", k, L""));
+            CRegDWORD reg(regpath + k.pItem);
+            reg = _wtol(iniFile.GetValue(L"registry_dword", k.pItem, L""));
         }
 
         /*keys.clear();
@@ -285,8 +284,8 @@ bool SyncSettingsCommand::Execute()
         iniFile.GetAllKeys(L"registry_string", keys);
         for (const auto& k : keys)
         {
-            CRegString reg(regpath + k);
-            reg = CString(iniFile.GetValue(L"registry_string", k, L""));
+            CRegString reg(regpath + k.pItem);
+            reg = CString(iniFile.GetValue(L"registry_string", k.pItem, L""));
         }
     }
 
@@ -323,10 +322,10 @@ bool SyncSettingsCommand::Execute()
             iniFile.GetAllKeys(L"ini_tmergeregex", keys);
             for (const auto& k : keys)
             {
-                CString sKey = k;
+                CString sKey = k.pItem;
                 CString sSection = sKey.Left(sKey.Find('.'));
                 sKey = sKey.Mid(sKey.Find('.') + 1);
-                CString sValue = CString(iniFile.GetValue(L"ini_tmergeregex", k, L""));
+                CString sValue = CString(iniFile.GetValue(L"ini_tmergeregex", k.pItem, L""));
                 regexIni.SetValue(sSection, sKey, sValue);
             }
             FILE * pFile = NULL;
@@ -377,14 +376,14 @@ bool SyncSettingsCommand::Execute()
             regexIni.GetAllSections(mitems);
             for (const auto& mitem : mitems)
             {
-                CString sSection = mitem;
+                CString sSection = mitem.pItem;
 
-                CString newval = regexIni.GetValue(mitem, L"regex", L"");
+                CString newval = regexIni.GetValue(mitem.pItem, L"regex", L"");
                 CString oldval = iniFile.GetValue(L"ini_tmergeregex", sSection + L".regex", L"");
                 bHaveChanges |= newval != oldval;
                 iniFile.SetValue(L"ini_tmergeregex", sSection + L".regex", newval);
 
-                newval = regexIni.GetValue(mitem, L"replace", L"5");
+                newval = regexIni.GetValue(mitem.pItem, L"replace", L"5");
                 oldval = iniFile.GetValue(L"ini_tmergeregex", sSection + L".replace", L"0");
                 bHaveChanges |= newval != oldval;
                 iniFile.SetValue(L"ini_tmergeregex", sSection + L".replace", newval);
@@ -404,7 +403,7 @@ bool SyncSettingsCommand::Execute()
         iniFile.SetValue(L"sync", L"synccounter", tmp);
 
 		std::string encrypted;
-		iniFile.SaveString(encrypted);
+		iniFile.Save(encrypted);
 
 /*
         // save the ini file

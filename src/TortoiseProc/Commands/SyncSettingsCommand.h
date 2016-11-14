@@ -18,7 +18,7 @@
 //
 #pragma once
 #include "Command.h"
-#include "SimpleIni.h"
+#include "..\..\ext\simpleini\SimpleIni.h"
 
 /**
  * \ingroup TortoiseProc
