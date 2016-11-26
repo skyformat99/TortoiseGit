@@ -169,7 +169,7 @@ protected:
 
 			CString date = time.Format(L"%Y-%m-%dT%H:%M:%S");
 			if (now)
-				date = CAppUtils::GetMsysgitVersion() > 0x02010000 ? L"\"now\"" : L"\"\"";
+				date = CAppUtils::GetMsysgitVersion(nullptr) > 0x02010000 ? L"\"now\"" : L"\"\"";
 
 			CString temp;
 			temp.Format(L"--date=%s --author=\"%s\" ", (LPCTSTR)date, (LPCTSTR)GetAuthor());

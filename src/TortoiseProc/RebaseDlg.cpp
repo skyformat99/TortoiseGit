@@ -970,7 +970,7 @@ int CRebaseDlg::CheckRebaseCondition()
 	//Todo Check $REBASE_ROOT
 	//Todo Check $DOTEST
 
-	if (!CAppUtils::CheckUserData())
+	if (!CAppUtils::CheckUserData(GetSafeHwnd()))
 		return -1;
 
 	if (!m_IsCherryPick)
@@ -996,7 +996,7 @@ void CRebaseDlg::CheckRestoreStash()
 {
 	bool autoStash = !m_IsCherryPick && g_Git.GetConfigValueBool(L"rebase.autostash");
 	if (m_bStashed && (autoStash || CMessageBox::Show(GetSafeHwnd(), IDS_DCOMMIT_STASH_POP, IDS_APPNAME, MB_YESNO | MB_ICONQUESTION) == IDYES))
-		CAppUtils::StashPop(autoStash ? 0 : 1);
+		CAppUtils::StashPop(GetSafeHwnd(), autoStash ? 0 : 1);
 	m_bStashed = false;
 }
 
@@ -1181,7 +1181,7 @@ void CRebaseDlg::OnBnClickedContinue()
 
 	if (m_RebaseStage == CHOOSE_BRANCH || m_RebaseStage == CHOOSE_COMMIT_PICK_MODE)
 	{
-		if (CAppUtils::IsTGitRebaseActive())
+		if (CAppUtils::IsTGitRebaseActive(GetSafeHwnd()))
 			return;
 		if (CheckRebaseCondition())
 			return;

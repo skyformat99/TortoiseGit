@@ -124,7 +124,7 @@ bool CloneCommand::Execute()
 			originStr = L" --origin " + dlg.m_strOrigin;
 
 		if(dlg.m_bAutoloadPuttyKeyFile)
-			CAppUtils::LaunchPAgent(&dlg.m_strPuttyKeyFile);
+			CAppUtils::LaunchPAgent(hwndExplorer, &dlg.m_strPuttyKeyFile);
 
 		CAppUtils::RemoveTrailSlash(dlg.m_Directory);
 		if (!dlg.m_bSVN)

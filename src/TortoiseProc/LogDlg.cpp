@@ -1525,7 +1525,7 @@ void CLogDlg::OnContextMenu(CWnd* pWnd, CPoint point)
 				::SendMessage(GetDlgItem(IDC_MSGVIEW)->GetSafeHwnd(), cmd, 0, -1);
 				break;
 			case CGitLogList::ID_EDITNOTE:
-				CAppUtils::EditNote(pRev, &m_LogList.m_ProjectProperties);
+				CAppUtils::EditNote(GetSafeHwnd(), pRev, &m_LogList.m_ProjectProperties);
 				this->FillLogMessageCtrl(true);
 				break;
 			}

@@ -557,7 +557,7 @@ void CSyncDlg::FetchComplete()
 
 	if (m_iPullRebase > 0)
 	{
-		CAppUtils::RebaseAfterFetch(upstream, m_iPullRebase ? 2 : 0, m_iPullRebase == 2);
+		CAppUtils::RebaseAfterFetch(GetSafeHwnd(), upstream, m_iPullRebase ? 2 : 0, m_iPullRebase == 2);
 		FillNewRefMap();
 		FetchOutList(true);
 
@@ -607,7 +607,7 @@ void CSyncDlg::FetchComplete()
 		}
 	}
 
-	CAppUtils::RebaseAfterFetch(upstream);
+	CAppUtils::RebaseAfterFetch(GetSafeHwnd(), upstream);
 	FillNewRefMap();
 	FetchOutList(true);
 
@@ -833,7 +833,7 @@ void CSyncDlg::OnBnClickedButtonEmail()
 		return ;
 	}
 
-	CAppUtils::SendPatchMail(cmd,out);
+	CAppUtils::SendPatchMail(GetSafeHwnd(), cmd, out);
 }
 void CSyncDlg::ShowProgressCtrl(bool bShow)
 {

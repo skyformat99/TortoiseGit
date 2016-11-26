@@ -1339,7 +1339,7 @@ void CRevisionGraphWnd::DoUpdate()
 
 void CRevisionGraphWnd::DoSwitch(CString rev)
 {
-	CAppUtils::PerformSwitch(rev);
+	CAppUtils::PerformSwitch(GetSafeHwnd(), rev);
 }
 
 void CRevisionGraphWnd::DoSwitchToHead()

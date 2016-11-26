@@ -381,7 +381,7 @@ void CChangedDlg::OnBnClickedCommit()
 
 	CString logmsg;
 	CTGitPathList selected;
-	CAppUtils::Commit(L"",
+	CAppUtils::Commit(GetSafeHwnd(), L"",
 		m_bWholeProject,
 		logmsg,
 		pathList,
@@ -414,13 +414,13 @@ void CChangedDlg::OnBnClickedStash()
 		switch (cmd & 0xFFFF)
 		{
 		case ID_STASH_SAVE:
-			CAppUtils::StashSave();
+			CAppUtils::StashSave(GetSafeHwnd());
 			break;
 		case ID_STASH_POP:
-			CAppUtils::StashPop(2);
+			CAppUtils::StashPop(GetSafeHwnd(), 2);
 			break;
 		case ID_STASH_APPLY:
-			CAppUtils::StashApply(L"", false);
+			CAppUtils::StashApply(GetSafeHwnd(), L"", false);
 			break;
 		case ID_STASH_LIST:
 			{

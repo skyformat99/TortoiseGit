@@ -22,5 +22,5 @@
 
 bool SVNDCommitCommand::Execute()
 {
-	return !!CAppUtils::SVNDCommit();
+	return !!CAppUtils::SVNDCommit(hwndExplorer);
 }

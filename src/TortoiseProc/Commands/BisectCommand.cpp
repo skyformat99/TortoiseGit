@@ -34,7 +34,7 @@ bool BisectCommand::Execute()
 		if (parser.HasKey(L"bad"))
 			firstBad = parser.GetVal(L"bad");
 
-		return CAppUtils::BisectStart(lastGood, firstBad, true);
+		return CAppUtils::BisectStart(hwndExplorer, lastGood, firstBad, true);
 	}
 	else if ((this->parser.HasKey(L"good") || this->parser.HasKey(L"bad") || this->parser.HasKey(L"skip") || this->parser.HasKey(L"reset")) && path.IsBisectActive())
 	{
@@ -53,7 +53,7 @@ bool BisectCommand::Execute()
 		if (parser.HasKey(L"ref") && !parser.HasKey(L"reset"))
 			ref = parser.GetVal(L"ref");
 
-		return CAppUtils::BisectOperation(op, ref);
+		return CAppUtils::BisectOperation(hwndExplorer, op, ref);
 	}
 	else
 		MessageBox(hwndExplorer, L"Operation unknown or not allowed.", L"TortoiseGit", MB_OK | MB_ICONINFORMATION);

@@ -34,5 +34,5 @@ bool PushCommand::Execute()
 	CString branch;
 	if (parser.HasVal(L"branch"))
 		branch = parser.GetVal(L"branch");
-	return CAppUtils::Push(branch);
+	return CAppUtils::Push(hwndExplorer, branch);
 }

@@ -25,5 +25,5 @@ bool SwitchCommand::Execute()
 {
 	CString base = parser.GetVal(L"rev");
 
-	return CAppUtils::Switch(base);
+	return CAppUtils::Switch(hwndExplorer, base);
 }

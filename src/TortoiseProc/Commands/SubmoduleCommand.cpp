@@ -36,7 +36,7 @@ bool SubmoduleAddCommand::Execute()
 	if( dlg.DoModal() == IDOK )
 	{
 		if (dlg.m_bAutoloadPuttyKeyFile)
-			CAppUtils::LaunchPAgent(&dlg.m_strPuttyKeyFile);
+			CAppUtils::LaunchPAgent(hwndExplorer, &dlg.m_strPuttyKeyFile);
 
 		CString cmd;
 		if (CStringUtils::StartsWith(dlg.m_strPath, g_Git.m_CurrentDir))

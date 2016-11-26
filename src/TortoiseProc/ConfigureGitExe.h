@@ -35,7 +35,7 @@ public:
 
 	static bool CheckGitVersion(HWND hwnd)
 	{
-		if (CAppUtils::GetMsysgitVersion() >= 0x01090500)
+		if (CAppUtils::GetMsysgitVersion(hwnd) >= 0x01090500)
 			return true;
 
 		CString tmp;

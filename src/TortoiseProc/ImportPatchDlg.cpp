@@ -506,7 +506,7 @@ void CImportPatchDlg::OnBnClickedOk()
 
 	SaveSplitterPos();
 
-	if (!CAppUtils::CheckUserData())
+	if (!CAppUtils::CheckUserData(GetSafeHwnd()))
 		return;
 
 	if(IsFinish())
